@@ -1,0 +1,9 @@
+<h2>Choisissez votre projet</h2>
+
+<ul>
+  <li *ngFor="let project of projects">
+    <h3>{{project.name}}</h3>
+    <div>{{project.description}}</div>
+    <a routerLink="/project/{{project.id}}">En savoir plus</a>
+  </li>
+</ul>
