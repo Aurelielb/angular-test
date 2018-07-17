@@ -1,0 +1,14 @@
+<div class="media mb-5" *ngIf="user">
+  <img src="{{user.image}}" alt="{{user.firstName}}" width="100" height="100" class="mr-3">
+  <div class="media-body">
+    <h2>{{user.firstName}} {{user.lastName}}</h2>
+    <p>Total des dons : {{donationsCount}}</p>
+  </div>
+</div>
+<h3>Historique des dons</h3>
+<ul class="list-unstyled" *ngIf="donationsHistory">
+  <li *ngFor="let donation of donationsHistory">
+    {{donation.timestamp | date}}
+  </li>
+</ul>
+<p class="text-secondary" *ngIf="!donationsHistory">Aucune donation pour le moment</p>

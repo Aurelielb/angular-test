@@ -25,29 +25,36 @@ export class InMemoryDataService implements InMemoryDbService {
         const users = [
             {
                 id: 1,
-                lastName: 'LastName 1',
-                firstName: 'First Name 1',
+                lastName: 'Petit',
+                firstName: 'Jean',
                 email: 'user1@example.com',
-                image: '/images/user1.jpg',
+                image: '/assets/pictures/beard-guy.svg',
                 password: 'password1'
             },
             {
                 id: 2,
-                lastName: 'LastName 2',
-                firstName: 'First Name 2',
+                lastName: 'Dubois',
+                firstName: 'Pauline',
                 email: 'user1@example.com',
-                image: '/images/user2.jpg',
+                image: '/assets/pictures/short-hair-girl.svg',
                 password: 'password2'
             },
             {
                 id: 3,
-                lastName: 'LastName 3',
-                firstName: 'First Name 3',
+                lastName: 'Dupont',
+                firstName: 'Ethan',
                 email: 'user1@example.com',
-                image: '/images/user3.jpg',
+                image: '/assets/pictures/old-man.svg',
                 password: 'password3'
             }
         ];
-        return { projects, users };
+        const donations = [
+            {
+                projectId: 1,
+                userId: 1,
+                timestamp: '1531844822603'
+            }
+        ]
+        return { projects, users, donations };
     }
 }

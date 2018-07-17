@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { UserService } from '../user.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +13,12 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   validatedUser: boolean;
   isSubmited: boolean = false;
+  serverError: boolean = false;
 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private userService: UserService
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -45,10 +46,10 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-    this.userService.loginUser(this.email.value, this.password.value).subscribe(
+    this.authService.loginUser(this.email.value, this.password.value).subscribe(
       logUserResponse => {
         if (logUserResponse.status > 300) {
-          this.loginForm.setErrors({ invalid: true });
+          this.serverError = true;
         } else {
           this.router.navigate(['user/edit']);
         }

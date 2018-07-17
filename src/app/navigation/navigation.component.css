@@ -1,0 +1,6 @@
+/* simule temporairement bootstrap js */
+.dropdown:hover .dropdown-menu,
+.dropdown-toggle:focus + .dropdown-menu,
+.dropdown-item:focus {
+    display: block;
+}

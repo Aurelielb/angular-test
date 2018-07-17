@@ -12,6 +12,9 @@ import { AppRoutingModule } from './/app-routing.module';
 import { ProjectDetailComponent } from './project-detail/project-detail.component';
 import { LoginComponent } from './login/login.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { UserEditComponent } from './user-edit/user-edit.component';
     ProjectsComponent,
     ProjectDetailComponent,
     LoginComponent,
-    UserEditComponent
+    UserEditComponent,
+    NavigationComponent,
+    UserListComponent,
+    UserDetailComponent,
   ],
   imports: [
     AppRoutingModule,

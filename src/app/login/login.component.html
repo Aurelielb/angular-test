@@ -10,5 +10,6 @@
     <input type="password" name="password" class="form-control" required
           formControlName="password" [class.is-invalid]="isSubmited && password.errors" value="">
   </div>
+  <div *ngIf="serverError" class="invalid-feedback">l'utilisateur n'a pu être trouvé avec ces informations</div>
   <button type="submit" class="btn btn-primary" [disabled]="loginForm.pristine">Connexion</button>
 </form>
