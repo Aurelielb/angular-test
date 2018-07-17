@@ -28,21 +28,24 @@ export class InMemoryDataService implements InMemoryDbService {
                 lastName: 'LastName 1',
                 firstName: 'First Name 1',
                 email: 'user1@example.com',
-                image: '/images/user1.jpg'
+                image: '/images/user1.jpg',
+                password: 'password1'
             },
             {
                 id: 2,
                 lastName: 'LastName 2',
                 firstName: 'First Name 2',
                 email: 'user1@example.com',
-                image: '/images/user2.jpg'
+                image: '/images/user2.jpg',
+                password: 'password2'
             },
             {
                 id: 3,
                 lastName: 'LastName 3',
                 firstName: 'First Name 3',
                 email: 'user1@example.com',
-                image: '/images/user3.jpg'
+                image: '/images/user3.jpg',
+                password: 'password3'
             }
         ];
         return { projects, users };

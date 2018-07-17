@@ -1,12 +1,14 @@
-<form [formGroup]="loginFormGroup" (ngSubmit)="login()">
+<form [formGroup]="loginForm" (ngSubmit)="login()">
   <h2>Connexion</h2>
-  <div>
+  <div class="form-group">
     <label for="email">E-mail</label>
-    <input type="email" formControlName="email">
+    <input type="email" name="email" class="form-control" required
+          formControlName="email" [ngClass]="{'is-invalid': isSubmited && email.errors}" value="">
   </div>
-  <div>
+  <div class="form-group">
     <label for="password">Mot de passe</label>
-    <input type="password" formControlName="password">
+    <input type="password" name="password" class="form-control" required
+          formControlName="password" [class.is-invalid]="isSubmited && password.errors" value="">
   </div>
-  <button type="submit">Connexion</button>
+  <button type="submit" class="btn btn-primary" [disabled]="loginForm.pristine">Connexion</button>
 </form>

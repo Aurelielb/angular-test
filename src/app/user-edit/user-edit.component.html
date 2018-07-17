@@ -1,0 +1,28 @@
+<h2>Modifie tes informations</h2>
+<form [formGroup]="userForm" (ngSubmit)="void">
+  <div class="form-group">
+    <label>Prénom
+      <input type="text" required name="firstname" class="form-control"
+          formControlName="firstname">
+    </label>
+  </div>
+  <div class="form-group">
+    <label>Nom
+      <input type="text" required name="lastname" class="form-control"
+          formControlName="firstname">
+    </label>
+  </div>
+  <div class="form-group">
+    <label>Email
+      <input type="text" required name="email" class="form-control"
+          formControlName="email">
+    </label>
+  </div>
+  <div class="form-group">
+    <label>Photo
+      <input type="file" name="image" class="form-control"
+          formControlName="image">
+    </label>
+  </div>
+  <button type="submit">Modifier</button>
+</form>

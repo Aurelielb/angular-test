@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -7,29 +10,50 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginFormGroup: FormGroup;
+  loginForm: FormGroup;
   validatedUser: boolean;
+  isSubmited: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
     this.createLoginForm();
   }
 
+  /**
+   * Create form group with validators
+   */
   createLoginForm(): void {
-    this.loginFormGroup = this.formBuilder.group({
-      email: ['', Validators.required, Validators.email],
-      password: ['', Validators.required, Validators.minLength(5)]
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
     });
   }
+  get email() { return this.loginForm.get('email'); }
+  get password() { return this.loginForm.get('password'); }
 
+  /**
+   * Try and log user with form inputs
+   */
   login(): void {
-    const loginDatas = this.loginFormGroup.value;
+    this.isSubmited = true;
 
-    if (this.loginFormGroup.invalid) {
+    if (this.loginForm.invalid) {
       return;
     }
-    console.log(this.loginFormGroup.invalid, this.loginFormGroup);
+    this.userService.loginUser(this.email.value, this.password.value).subscribe(
+      logUserResponse => {
+        if (logUserResponse.status > 300) {
+          this.loginForm.setErrors({ invalid: true });
+        } else {
+          this.router.navigate(['user/edit']);
+        }
+      }
+    );
   }
 
 }
