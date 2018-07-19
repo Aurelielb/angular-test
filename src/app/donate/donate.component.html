@@ -1,0 +1,14 @@
+<button class="{{donateClass}}" (click)="openDonation()">Faire un don</button>
+
+<div class="modal fade show d-block" tabindex="-1" role="dialog" *ngIf="showVideo">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <video controls muted width="500" height="375">
+        <source src="/assets/videos/les-nuls-chats-kwiskas.mp4" type="video/mp4">
+        <source src="/assets/videos/les-nuls-chats-kwiskas.webm" type="video/webm">
+        <p>Non supporté <!-- todo: remplacement --></p>
+      </video>
+      <p></p>
+    </div>
+  </div>
+</div>

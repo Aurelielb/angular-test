@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,11 +27,10 @@ export class DonationsService {
   }
 
   addDonation (projectId: number, userId: number): Observable<any> {
-    return this.http.post<any>(this.donationsUrl, {projectId, userId, timestamp: Date.now()}).pipe(
-      catchError(this.handleError<any>(''))
+    return this.http.post<any>(this.donationsUrl, { projectId: projectId, userId: userId, timestamp: Date.now().toString() }).pipe(
+      catchError(this.handleError<any>({ status: 400, message: 'Error while updating User' }))
     );
   }
-
 
   /**
    * handle HTTP errors

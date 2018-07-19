@@ -1,6 +1,7 @@
 # AngularTest
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
+First install it if needed : npm install -g @angular/cli@latest
 
 ## Development server
 

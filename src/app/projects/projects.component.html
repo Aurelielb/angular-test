@@ -7,7 +7,7 @@
         <h3>{{project.name}}</h3>
         <div>{{project.description | slice : 0 : 148}} ...</div>
         <a routerLink="/project/{{project.id}}">En savoir plus</a><br>
-        <button appDonate [appProjectid]="project.id" class="btn btn-primary my-1">Faire un don</button>
+        <app-donate [donateClass]="'btn btn-primary my-1'" [projectId]="project.id"></app-donate>
       </li>
     </ul>
   </div>

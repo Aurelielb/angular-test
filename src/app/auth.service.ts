@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { User } from './user';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 interface Response {
   status: number;
@@ -50,6 +50,14 @@ export class AuthService {
     );
   }
 
+  addUser (user: User): Observable<Response> {
+    return this.http.post<Response>(this.usersUrl, user, httpOptions).pipe(
+      map(_ => ({ status: 200, message: 'success' })),
+      tap(_ => this.setCurrentUser(user)),
+      catchError(this.handleError<Response>({ status: 400, message: 'Error while adding User' }))
+    );
+  }
+
   private identifyUser (email: string, password: string): Observable<Response> {
     // const url = `${this.usersUrl}?email=${email}&password=${password}`;
     return this.http.get<User>(this.usersUrl, { params: {/*'email': email, */'password': password } }).pipe(
@@ -72,7 +80,7 @@ export class AuthService {
 
   /**
    * handle HTTP errors
-   * @param result optionnal, set the result you want to return
+   * @param result optional, set the result you want to return
    */
   private handleError<T> (result?: T) {
     return (error: any): Observable<T> => {

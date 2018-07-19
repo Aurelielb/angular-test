@@ -64,10 +64,10 @@ export class ProjectDetailComponent implements OnInit {
     this.donationsService.getDonationsByProjectId(id).subscribe(donations => {
       this.donationsCount = donations.length;
       donations.forEach(donation => {
-        if (this.userDonationsHistory[donation.userId]) {
+        if (this.userDonationsHistory[donation.userId] && this.userDonationsHistory[donation.userId].id) {
           this.userDonationsHistory[donation.userId].count ++;
         } else {
-          this.userDonationsHistory[donation.userId] = { count: 1, ...this.users[donation.userId] };
+          this.userDonationsHistory[donation.userId] = { count: 1, ...this.users[donation.userId - 1] };
         }
       });
       this.userDonationsHistory = this.userDonationsHistory.filter(user => user);
