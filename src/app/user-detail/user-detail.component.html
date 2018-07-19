@@ -6,9 +6,9 @@
   </div>
 </div>
 <h3>Historique des dons</h3>
-<ul class="list-unstyled" *ngIf="donationsHistory">
-  <li *ngFor="let donation of donationsHistory">
-    {{donation.timestamp | date}}
+<ul class="list-group" *ngIf="donationsHistory">
+  <li *ngFor="let donation of donationsHistory | slice : 0 : 20" class="list-group-item">
+    <strong>{{getProjectById(donation.projectId).name}}</strong> : {{donation.timestamp | date}}
   </li>
 </ul>
 <p class="text-secondary" *ngIf="!donationsHistory">Aucune donation pour le moment</p>

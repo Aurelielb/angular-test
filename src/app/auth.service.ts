@@ -11,7 +11,7 @@ interface Response {
 }
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-}
+};
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +31,7 @@ export class AuthService {
   }
 
   isLoggedIn (): boolean {
-    return localStorage.getItem('loggedIn') == 'true' || false;
+    return localStorage.getItem('loggedIn') === 'true' || false;
   }
 
   getCurrentUser (): User {
@@ -44,7 +44,7 @@ export class AuthService {
 
   updateUser (user: User): Observable<Response> {
     return this.http.put<User>(this.usersUrl, user, httpOptions).pipe(
-      map(_ => { return { status: 200, message: 'success' } }),
+      map(_ => ({ status: 200, message: 'success' })),
       tap(_ => this.setCurrentUser(user)),
       catchError(this.handleError<Response>({ status: 400, message: 'Error while updating User' }))
     );
@@ -56,9 +56,8 @@ export class AuthService {
       map(users => {
         if (users[0]) {
           this.setCurrentUser(users[0] as User);
-          return { status: 200, message: 'success' }
-        }
-        else {
+          return { status: 200, message: 'success' };
+        } else {
           return { status: 404, message: 'User not found' };
         }
       }),
@@ -80,7 +79,7 @@ export class AuthService {
       console.log('catchError', error);
 
       return of(result as T);
-    }
+    };
   }
 
 }

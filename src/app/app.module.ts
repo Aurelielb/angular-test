@@ -15,6 +15,7 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { DonateDirective } from './donate.directive';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     NavigationComponent,
     UserListComponent,
     UserDetailComponent,
+    DonateDirective,
   ],
   imports: [
     AppRoutingModule,

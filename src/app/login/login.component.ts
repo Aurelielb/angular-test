@@ -11,9 +11,8 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  validatedUser: boolean;
-  isSubmited: boolean = false;
-  serverError: boolean = false;
+  isSubmitted = false;
+  serverError = false;
 
   constructor(
     private router: Router,
@@ -41,7 +40,7 @@ export class LoginComponent implements OnInit {
    * Try and log user with form inputs
    */
   login(): void {
-    this.isSubmited = true;
+    this.isSubmitted = true;
 
     if (this.loginForm.invalid) {
       return;

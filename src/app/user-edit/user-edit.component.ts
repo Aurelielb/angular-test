@@ -13,9 +13,9 @@ import { AuthService } from '../auth.service';
 export class UserEditComponent implements OnInit {
   user: User;
   userForm: FormGroup;
-  isSubmited: boolean;
-  serverError: boolean = false;
-  serverSuccess: boolean = false;
+  isSubmitted: boolean;
+  serverError = false;
+  serverSuccess = false;
 
   portraits: object = [
     { src: '/assets/pictures/beard-guy.svg', name: 'beard guy'},
@@ -40,7 +40,7 @@ export class UserEditComponent implements OnInit {
   }
 
   onSubmit (): void {
-    this.isSubmited = true;
+    this.isSubmitted = true;
 
     if (this.userForm.invalid) {
       return;
@@ -64,11 +64,11 @@ export class UserEditComponent implements OnInit {
       lastName: [this.user.lastName, Validators.required],
       email: [this.user.email, [Validators.required, Validators.email]],
       image: [this.user.image]
-    })
+    });
   }
-  
+
   checkLoggedIn (): void {
-    if (false == this.authService.isLoggedIn()) {
+    if (false === this.authService.isLoggedIn()) {
       this.router.navigate(['login']);
     }
   }

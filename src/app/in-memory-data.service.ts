@@ -5,21 +5,49 @@ export class InMemoryDataService implements InMemoryDbService {
         const projects = [
             {
                 id: 1,
-                name: 'Projet 1',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                images: [{ title: 'lorem ipsum', src: '/images/project1-1.jpg' }]
+                name: 'Lorem ipsum dolor 1',
+                logo: '/assets/logo-default.png',
+                organisation: 'Organisation Lorem',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'
+                    + ' ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
+                    + ' laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in'
+                    + ' voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat'
+                    + ' non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                images: [
+                    { title: 'lac', src: '/assets/projects/lake.jpg' },
+                    { title: 'montagne', src: '/assets/projects/mountain.jpg' }
+                ]
             },
             {
                 id: 2,
-                name: 'Projet 2',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                images: [{ title: 'lorem ipsum', src: '/images/project2-1.jpg' }]
+                name: 'Lorem ipsum dolor 2',
+                logo: '/assets/logo-default.png',
+                organisation: 'Organisation Ipsum',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'
+                    + ' ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
+                    + ' laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in'
+                    + ' voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat'
+                    + ' non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                images: [
+                    { title: 'rivière', src: '/assets/projects/river.jpg' },
+                    { title: 'route dans les bois', src: '/assets/projects/woodland-road.jpg' }
+                ]
             },
             {
                 id: 3,
-                name: 'Projet 3',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                images: [{ title: 'lorem ipsum', src: '/images/project3-1.jpg' }]
+                name: 'Lorem ipsum dolor 3',
+                logo: '/assets/logo-default.png',
+                organisation: 'Organisation Dolor',
+                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt'
+                    + ' ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco'
+                    + ' laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in'
+                    + ' voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat'
+                    + ' non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+                images: [
+                    { title: 'rivière', src: '/assets/projects/river.jpg' },
+                    { title: 'lac', src: '/assets/projects/lake.jpg' },
+                    { title: 'route dans les bois', src: '/assets/projects/woodland-road.jpg' }
+                ]
             }
         ];
         const users = [
@@ -54,7 +82,7 @@ export class InMemoryDataService implements InMemoryDbService {
                 userId: 1,
                 timestamp: '1531844822603'
             }
-        ]
+        ];
         return { projects, users, donations };
     }
 }

@@ -16,7 +16,7 @@ export class UserDetailComponent implements OnInit {
   user: User;
   donationsCount: number;
   donationsHistory;
-  projects: Project[];
+  projects: Project[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -27,7 +27,6 @@ export class UserDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getSelectedUser();
-    this.getProjects();
   }
 
   getSelectedUser () {
@@ -45,12 +44,17 @@ export class UserDetailComponent implements OnInit {
     });
   }
 
-  getProjects(): void {
-    this.projectService.getProjects().subscribe(
-      projects => {
-        this.projects = projects
-      }
-    );
+  getProjectById (id: number): Project {
+    if (this.projects[id]) {
+      return this.projects[id];
+    } else {
+      this.projectService.getProject(id).subscribe(
+        project => {
+          this.projects[project.id] = project;
+          return project;
+        }
+      );
+    }
   }
 
 }

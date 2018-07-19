@@ -1,4 +1,37 @@
-<article>
+<article *ngIf="project">
   <h2>{{project.name}}</h2>
+  <div class="row">
+    <p class="col lead" *ngIf="donationsCount">Nombre de dons : <strong>{{donationsCount}}</strong></p>
+    <p class="col text-secondary d-flex align-items-center justify-content-end">
+      <img src="{{project.logo}}" alt="{{project.organisation}}" class="rounded mr-2" width="32" height="32">
+      {{project.organisation}}
+    </p>
+    </div>
+  <div class="carousel slide w-75 mx-auto my-3" *ngIf="project.images">
+    <div class="carousel-inner">
+      <div class="carousel-item" [class.active]="slide == index" *ngFor="let image of project.images; index as index">
+        <img class="d-block w-100" src="{{image.src}}" alt="{{image.title}}">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#" role="button" (click)="nextSlide($event)">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#" role="button" (click)="nextSlide($event)">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
   <p>{{project.description}}</p>
+  <p>
+    <button appDonate class="btn btn-primary">Faire un don</button>
+  </p>
+
+  <h3 class="mt-3">Les donateurs</h3>
+  <ul class="list-unstyled" *ngIf="userDonationsHistory">
+    <li class="d-flex align-items-center" *ngFor="let user of userDonationsHistory">
+      <img src="{{user.image}}" alt="{{user.firstName}}" class="rounded mr-2" width="32" height="32">
+      {{user.firstName}} {{user.lastName}} : <strong class="mx-1">{{user.count}}</strong> don{{user.count > 1 ? 's' : ''}}
+    </li>
+  </ul>
 </article>

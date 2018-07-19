@@ -36,6 +36,6 @@ export class UsersService {
       console.log('catchError', error);
 
       return of(result as T);
-    }
+    };
   }
 }
