@@ -1,19 +1,19 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AuthService } from './auth.service';
+import { CampaignsService } from './campaigns.service';
 
-describe('AuthService', () => {
+describe('CampaignsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [AuthService],
+      providers: [CampaignsService],
       imports: [
         HttpClientModule
       ]
     });
   });
 
-  it('should be created', inject([AuthService], (service: AuthService) => {
+  it('should be created', inject([CampaignsService], (service: CampaignsService) => {
     expect(service).toBeTruthy();
   }));
 });

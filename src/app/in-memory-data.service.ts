@@ -108,6 +108,29 @@ export class InMemoryDataService implements InMemoryDbService {
                 timestamp: '1531844822603'
             }
         ];
-        return { projects, users, donations };
+        const campaigns = [
+            {
+                id: 1,
+                name: 'Campagne 1',
+                mp4Src: '/assets/videos/les-nuls-chats-kwiskas.mp4',
+                webmSrc: '/assets/videos/les-nuls-chats-kwiskas.webm',
+                url: 'http://www.example1.com'
+            },
+            {
+                id: 2,
+                name: 'Campagne 2',
+                mp4Src: '/assets/videos/les-nuls-chats-kwiskas.mp4',
+                webmSrc: '/assets/videos/les-nuls-chats-kwiskas.webm',
+                url: 'http://www.example2.com'
+            },
+            {
+                id: 3,
+                name: 'Campagne 3',
+                mp4Src: '/assets/videos/les-nuls-chats-kwiskas.mp4',
+                webmSrc: '/assets/videos/les-nuls-chats-kwiskas.webm',
+                url: 'http://www.example3.com'
+            }
+        ];
+        return { projects, users, donations, campaigns };
     }
 }

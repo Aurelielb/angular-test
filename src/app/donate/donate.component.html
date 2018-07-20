@@ -1,14 +1,25 @@
 <button class="{{donateClass}}" (click)="openDonation()">Faire un don</button>
 
-<div class="modal fade show d-block" tabindex="-1" role="dialog" *ngIf="showVideo">
+<div class="modal fade show d-block" tabindex="-1" role="dialog" *ngIf="selectedCampaign && showModal">
   <div class="modal-dialog">
     <div class="modal-content">
-      <video controls muted width="500" height="375">
-        <source src="/assets/videos/les-nuls-chats-kwiskas.mp4" type="video/mp4">
-        <source src="/assets/videos/les-nuls-chats-kwiskas.webm" type="video/webm">
+      <video controls autoPlay width="500" height="375"
+          (play)="onPlay($event)" (pause)="onPause($event)">
+        <source src="{{selectedCampaign.mp4Src}}" type="video/mp4" *ngIf="selectedCampaign.mp4Src">
+        <source src="{{selectedCampaign.webmSrc}}" type="video/webm" *ngIf="selectedCampaign.webmSrc">
         <p>Non supporté <!-- todo: remplacement --></p>
       </video>
-      <p></p>
+      <p class="d-flex m-0">
+        <a href="{{selectedCampaign.url}}" target="_blank" rel="noopener" class="btn btn-secondary flex-grow-1">
+          En savoir plus sur {{selectedCampaign.name}}
+        </a>
+        <a href="#" (click)="closeModal($event)" class="btn btn-secondary">&times;</a>
+      </p>
+      <p class="m-0 bg-dark text-white" *ngIf="!enableDonation">Temps restant : {{timeToWait}}s</p>
+      <p class="m-0 p-1 bg-dark text-center" *ngIf="enableDonation">
+        <button (click)="addDonation($event)" class="btn btn-primary" *ngIf="!success">Envoyer mon don</button>
+        <span class="text-success" *ngIf="success">Merci, votre don à bien été envoyé !</span>
+      </p>
     </div>
   </div>
 </div>
