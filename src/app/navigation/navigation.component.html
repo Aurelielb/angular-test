@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand">
+  <h1 class="navbar-brand mb-0">Test-app</h1>
+  <ul class="navbar-nav">
+    <li class="nav-item"><a class="nav-link" routerLink="/">Accueil</a></li>
+    <li class="nav-item" *ngIf="false == loggedIn"><a class="nav-link" routerLink="/login">Connexion</a></li>
+    <li class="nav-item" *ngIf="false == loggedIn"><a class="nav-link" routerLink="/register">S'inscrire</a></li>
+    <li class="nav-item dropdown" *ngIf="loggedIn">
+      <a class="nav-link dropdown-toggle" id="userDropdown" routerLink="#">Mon compte</a>
+      <div class="dropdown-menu" aria-labelledby="userDropdown">
+          <a class="dropdown-item" routerLink="/user/detail/{{user.id}}">Voir mes dons</a>
+          <a class="dropdown-item" routerLink="/user/edit">Modifier mon profil</a>
+          <a class="dropdown-item" (click)="logoutUser()">Se déconnecter</a>
+      </div>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,17 @@
+<!-- todo : séparer composant projets -->
+<div class="row">
+  <div class="col-8">
+    <h2 class="mb-4">Choisissez votre projet</h2>
+    <ul class="list-unstyled row">
+      <li class="mb-3 col-lg-4" *ngFor="let project of projects">
+        <h3>{{project.name}}</h3>
+        <div>{{project.description | slice : 0 : 148}} ...</div>
+        <a routerLink="/project/{{project.id}}">En savoir plus</a><br>
+        <app-donate [donateClass]="'btn btn-primary my-1'" [projectId]="project.id"></app-donate>
+      </li>
+    </ul>
+  </div>
+  <div class="col-4">
+    <app-user-list></app-user-list>
+  </div>
+</div>
